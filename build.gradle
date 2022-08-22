@@ -17,6 +17,19 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+sourceSets {
+	main {
+		java {
+			if (project.environment == 'prod'){
+				exclude '**/NewDemoService.java'
+			}
+			if (project.environment == 'local'){
+				exclude '**/OldDemoService.java'
+			}
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
