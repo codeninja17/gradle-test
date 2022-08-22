@@ -9,6 +9,6 @@ public class NewDemoService implements DemoService, InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("NewDemoService ...");
+        System.out.println("NewDemoService .........");
     }
 }

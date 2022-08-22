@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class OldDemoService implements DemoService, InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("OldDemoService ...");
+        System.out.println("OldDemoService .....");
     }
 }
