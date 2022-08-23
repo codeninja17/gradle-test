@@ -20,11 +20,12 @@ dependencies {
 sourceSets {
 	main {
 		java {
-			if (project.environment == 'prod'){
-				exclude '**/NewDemoService.java'
-			}
-			if (project.environment == 'local'){
-				exclude '**/OldDemoService.java'
+			if (project.hasProperty('channel')){
+				if (project.getProperty("channel") == 'local'){
+					exclude '**/OldDemoService.java'
+				}else if(project.getProperty("channel")== 'prod'){
+					exclude '**/NewDemoService.java'
+				}
 			}
 		}
 	}
