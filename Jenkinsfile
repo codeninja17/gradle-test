@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Test & Build Artifact - *******') {
             steps {
-                sh './gradlew clean build -Penvironment=${channel}'
+                sh './gradlew clean build -Pchannel=${channel}'
             }
         }
     }
