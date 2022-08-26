@@ -6,13 +6,13 @@ pipeline {
             parallel{
                    stage ('Test & Build Artifact - prod') {
                             steps {
-                                sh './gradlew clean build -Pchannel=prod'
+                                sh './gradlew clean build -Pchannel=local'
                             }
                    }
 
                    stage ('Test & Build Artifact - local') {
                               steps {
-                                 sh './gradlew clean build -Pchannel=local'
+                                 sh './gradlew clean build -Pchannel=prod'
                               }
                    }
             }
