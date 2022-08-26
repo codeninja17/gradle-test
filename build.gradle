@@ -20,14 +20,19 @@ dependencies {
 sourceSets {
 	main {
 		java {
-			if (project.hasProperty('channel')){
+     		if (project.hasProperty('channel')){
 				if (project.getProperty("channel") == 'local'){
-					exclude '**/OldDemoService.java'
-				}else if(project.getProperty("channel")== 'prod'){
-					exclude '**/NewDemoService.java'
+					exclude 'com/example/demo/service/impl/OldDemoService.java'
+				} else if(project.getProperty("channel")== 'prod'){
+					exclude 'com/example/demo/service/impl/NewDemoService.java'
 				}
 			}
+			destinationDirectory.value(project.getLayout().getBuildDirectory().dir("classes/"+project.getProperty("channel")+"/java"));
 		}
 	}
+}
+
+bootJar {
+	mainClass = 'cpm.example.demo.DemoApplication'
 }
 
