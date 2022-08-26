@@ -2,19 +2,20 @@ pipeline {
     agent any
 
     stages {
-    parallel{
+       stage {
+            parallel{
+                   stage ('Test & Build Artifact - *******') {
+                            steps {
+                                sh './gradlew clean build -Pchannel=prod'
+                            }
+                   }
 
-    stage ('Test & Build Artifact - *******') {
-                steps {
-                    sh './gradlew clean build -Pchannel=prod'
-                }
+                   stage ('Test & Build Artifact - *******') {
+                              steps {
+                                 sh './gradlew clean build -Pchannel=local'
+                              }
+                   }
             }
-
-            stage ('Test & Build Artifact - *******') {
-                        steps {
-                            sh './gradlew clean build -Pchannel=local'
-                        }
-                    }
-    }
+       }
     }
 }
